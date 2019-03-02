@@ -1,0 +1,34 @@
+{
+  "name": "perenatal",
+  "version": "1.0.0",
+  "description": "perenatal center",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rostdigital",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-jade": "^1.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify-es": "^1.0.4",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp-util": "^3.0.8",
+    "imagemin-pngquant": "^5.0.0",
+    "node-sass": "^3.10.1",
+    "vinyl-ftp": "^0.6.0"
+  },
+  "dependencies": {
+    "bourbon": "^4.2.7"
+  }
+}
