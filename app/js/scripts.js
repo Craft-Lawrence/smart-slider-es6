@@ -62,7 +62,7 @@ $( document ).ready(function() {
 		}
 		srcs.push(src); // добавляем новую картинку в конец массива
 
-		Cookies.set('srcs', JSON.stringify(srcs), { expires: 365 }); // записываем масств в куку
+		Cookies.set('srcs', JSON.stringify(srcs), { expires: 365 }); // записываем массив в куку
 
 		//$('.slick_slider').slick('slickAdd','<div class="item"><div class="img_box"><img src="'+src+'"></div></div>');
 
