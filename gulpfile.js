@@ -78,7 +78,7 @@ gulp.task('css-libs', ['sass'], function() {
 		'app/libs/slick/slick-theme.css',
 	]) // Выбираем файл для минификации
 	.pipe(concat('libs.min.css'))
-	.pipe(cssnano({ zindex: false })) // Сжимаем
+	//.pipe(cssnano({ zindex: false })) // Сжимаем
 	.pipe(gulp.dest('app/css')); // Выгружаем в папку app/css
 });
 

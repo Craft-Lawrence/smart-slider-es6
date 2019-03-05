@@ -180,6 +180,25 @@ header,section,footer
         display: flex
         justify-content: center
         align-items: center
+        .closest_cont
+          position: relative
+          i
+            position: absolute
+            top: 0
+            right: 0
+            color: #fff
+            background: rgba(0,0,0,.5)
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 40px
+            height: 40px
+            font-size: 25px
+            font-family: monospace
+            cursor: pointer
+            transition: .3s
+            &:hover
+              background: rgba(0,0,0,1)
         img
           height: 200px
 

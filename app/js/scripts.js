@@ -89,7 +89,7 @@ $( document ).ready(function() {
 		// /Ещё один способ создавать динамические элементы
 
 		// Добавляю слайд
-		$('.slick_slider').slick('slickAdd','<div class="item"><div class="img_box"><img src="'+src_f+'"></div></div>');
+		$('.slick_slider').slick('slickAdd','<div class="item"><div class="img_box"><div class="closest_cont"><i class="close">x</i><img src="'+src_f+'"></div></div></div>');
 	}
 
 	if ( Cookies.get('srcs') !== undefined ) {
@@ -102,5 +102,20 @@ $( document ).ready(function() {
 	}
 	/* /Получаю слайды с куки, добавляю в слайдер, и инициализирую его */
 
+	/* Удаление слайдов */
+	$('.slick_slider').on('click', '.closest_cont i', function() {
+		let slideIndex	= $(this).closest('.item.slick-slide').data('slick-index'), // индекс удаляемого слайда
+			del_href	= $(this).parent().find(img); // ссылка удаляемого слайда
 
+		$('.slick_slider').slick('slickRemove',slideIndex); // удаляю слайд по индексу
+
+		// Удаляем слайд из кукисов
+		// 1) Получам текущую куку (она пока что строка)
+		// 2) Пребразуем строку в объект (JSON.parse)
+		// 3) Проходимся циклом по объекту и ищем ссылку, которая совпадает с del_href
+		// 4) Удаляем её (с помощью splice)
+		// 5) Преобразуем новый объект в строку (stringify)
+		// 6) Сохраняем эту строку в кукис
+	});
+	/* /Удаление слайдов */
 });
