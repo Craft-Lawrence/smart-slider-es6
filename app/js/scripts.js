@@ -64,7 +64,7 @@ $( document ).ready(function() {
 
 		Cookies.set('srcs', JSON.stringify(srcs), { expires: 365 }); // записываем массив в куку
 
-		//$('.slick_slider').slick('slickAdd','<div class="item"><div class="img_box"><img src="'+src+'"></div></div>');
+		slide_add( src );
 
 		return false;
 	});
@@ -72,12 +72,33 @@ $( document ).ready(function() {
 
 
 	/* Получаю слайды с куки, добавляю в слайдер, и инициализирую его */
+	function slide_add( src_f ) {
+
+		// Ещё один способ создавать динамические элементы
+		/*let item = $('<div/>', {
+				class: 'item',
+			});
+
+		let img_box = $('<div/>', {
+				class: 'img_box',
+			}).appendTo(item);
+
+		let img = $('<img/>', {
+				src: src_f,
+			}).appendTo(img_box);*/
+		// /Ещё один способ создавать динамические элементы
+
+		// Добавляю слайд
+		$('.slick_slider').slick('slickAdd','<div class="item"><div class="img_box"><img src="'+src_f+'"></div></div>');
+	}
+
 	if ( Cookies.get('srcs') !== undefined ) {
-		console.log( JSON.parse(Cookies.get('srcs')) );
+		let array = JSON.parse(Cookies.get('srcs')); // Преобразовываю строку из куки в json-объект
 
-		// Добавляю элементы в массив (ВАШ КОД)
-
-		$('.slick_slider').slick(); // И ТОЛЬКО ПОСЛЕ ЭТОГО инициализирую слайдер
+		$('.slick_slider').slick(); // Инициализирую слайдер
+		
+		for (var i = 0; i < array.length; i++) // Перебираю слайды, полученные с куки
+			slide_add( array[i] ); // Добавляю элементы в слайдер слайды
 	}
 	/* /Получаю слайды с куки, добавляю в слайдер, и инициализирую его */
 
