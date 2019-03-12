@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-	/* Поиск картинок в интернете */
+	// SUBJECT Поиск картинок в интернете
 	function f_search(search, count) {
 		$.ajax({
 			url: 'http://foxk.ru/search.php?count='+count+'&string='+search,
@@ -46,11 +46,11 @@ $( document ).ready(function() {
 	if ( Cookies.get('count') != '' ) {
 		$("select option[value=" + Cookies.get('count') + "]").attr('selected', 'true');
 	}
-	/* /Поиск картинок в интернете */
+	// /Поиск картинок в интернете
 
 
 	
-	/* Добавление слайдов в куку + слайдер */
+	// SUBJECT Добавление слайдов в куку + слайдер
 	$('#results_container').on('click', '.item a', function() {
 		let src = $(this).attr('href'); // получаем href ссылки, по которой кликнули
 
@@ -68,10 +68,10 @@ $( document ).ready(function() {
 
 		return false;
 	});
-	/* /Добавление слайдов в куку + слайдер */
+	// /Добавление слайдов в куку + слайдер
 
 
-	/* Получаю слайды с куки, добавляю в слайдер, и инициализирую его */
+	// SUBJECT Получаю слайды с куки, добавляю в слайдер, и инициализирую его 
 	function slide_add( src_f ) {
 
 		// Ещё один способ создавать динамические элементы
@@ -100,9 +100,9 @@ $( document ).ready(function() {
 		for (var i = 0; i < array.length; i++) // Перебираю слайды, полученные с куки
 			slide_add( array[i] ); // Добавляю элементы в слайдер слайды
 	}
-	/* /Получаю слайды с куки, добавляю в слайдер, и инициализирую его */
+	// /Получаю слайды с куки, добавляю в слайдер, и инициализирую его 
 
-	/* Удаление слайдов */
+	// SUBJECT Удаление слайдов 
 	$('.slick_slider').on('click', '.closest_cont i', function() {
 		let slideIndex	= $(this).closest('.item.slick-slide').data('slick-index'), // индекс удаляемого слайда
 			del_href	= $(this).parent().find(img); // ссылка удаляемого слайда
@@ -116,6 +116,24 @@ $( document ).ready(function() {
 		// 4) Удаляем её (с помощью splice)
 		// 5) Преобразуем новый объект в строку (stringify)
 		// 6) Сохраняем эту строку в кукис
+
+		// ©Код Оли (Просто пример. Для моего проекта он работать не будет)
+		var new_cash = JSON.parse(Cookies.get('srcs'));
+		console.log(new_cash);
+		for (var i = 0; i < new_cash.length; i++) {
+			var pic = new_cash[i];	
+			if ( pic == del_href ) {
+				var ne = new_cash.splice(new_cash.indexOf(pic),1);
+				//console.log(new_cash.indexOf(pic), i);
+				console.log(new_cash);
+				console.log(ne);
+				JSON.stringify(new_cash);
+				console.log(JSON.stringify(new_cash));
+				srcs = JSON.stringify(new_cash);
+				Cookies.set('srcs', srcs, { expires: 365 });
+			};
+		};
+		// /©Код Оли (Просто пример. Для моего проекта он работать не будет)
 	});
-	/* /Удаление слайдов */
+	// /Удаление слайдов 
 });
